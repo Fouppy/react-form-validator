@@ -1,0 +1,11 @@
+.root {
+  border: 1px solid gray
+}
+
+.error {
+  border: 1px solid red
+}
+
+.errorText {
+  color: red
+}

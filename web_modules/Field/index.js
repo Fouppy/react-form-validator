@@ -1,20 +1,27 @@
 import React, { Component, PropTypes } from "react"
 
+import classNames from "classnames"
+
+import styles from "./index.css"
+
 export default class Field extends Component {
-  	constructor() {
-  		  super()
-  	}
 
     setContent() {
         const {
           type,
-          values
+          values,
+          error
         } = this.props
+
+        const inputClassName = classNames(styles.root, {
+            [styles.error]: error !== ""
+        })
 
         switch (type) {
             case "select":
                 this.content =
                     <select
+                        className={ inputClassName }
                         ref={ type }>
                     {
                         values.map((value, index) => {
@@ -31,6 +38,7 @@ export default class Field extends Component {
             case "textarea":
                 this.content =
                     <textarea
+                        className={ inputClassName }
                         ref={ type }
                         placeholder={ values[0] }>
                     </textarea>
@@ -38,6 +46,7 @@ export default class Field extends Component {
             case "email":
                 this.content =
                     <input
+                        className={ inputClassName }
                         type="email"
                         ref={ type }
                         placeholder={ values[0] } />
@@ -49,7 +58,6 @@ export default class Field extends Component {
     }
 
   	render() {
-
         const {
           error
         } = this.props
@@ -61,7 +69,7 @@ export default class Field extends Component {
                 { this.content }
                 {
                   error !== "" &&
-                  <p>{ error }</p>
+                  <p className={ styles.errorText }>{ error }</p>
                 }
             </fieldset>
     		)

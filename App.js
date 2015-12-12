@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react"
 
-import Field from "./Field"
+import Field from "Field"
 
 export default class App extends Component {
 
