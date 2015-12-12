@@ -9,8 +9,6 @@ $ npm i
 
 ## Usage
 
-## Development
-
 ```console
 npm start
 ```
